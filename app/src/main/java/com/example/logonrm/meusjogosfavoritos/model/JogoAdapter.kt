@@ -16,12 +16,13 @@ class JogoAdapter(
 
       val  context: Context,
       val  jogos: List<Jogo>,
-      val listener: (Jogo) -> Unit) : RecyclerView.Adapter<JogoAdapter.JogoViewHolder>() {
+      val listener: (Jogo) -> Unit,
+      val listenerDelete: (Jogo) -> Unit) : RecyclerView.Adapter<JogoAdapter.JogoViewHolder>() {
 
     override fun onBindViewHolder(holder: JogoViewHolder?, position: Int) {
         val jogo = jogos[position]
         holder?.let {
-            holder.bindView(jogo, listener)
+            holder.bindView(jogo, listener, listenerDelete)
         }
     }
 
@@ -36,11 +37,17 @@ class JogoAdapter(
     }
 
     class JogoViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-        fun bindView(jogo: Jogo, listener: (Jogo) -> Unit) = with(itemView){
+        fun bindView(jogo: Jogo,
+                     listener: (Jogo) -> Unit,
+                     listenerDelete: (Jogo) -> Unit) = with(itemView) {
             tvTitulo.text = jogo.titulo
             tvDescricao.text = jogo.descricao
-            ivfoto.setImageDrawable(ContextCompat.getDrawable(context,jogo.fotoId))
-            tvLancamento.setText(context.getString(R.string.lancamento,jogo.anoLancamento))
+            ivFoto.setImageDrawable(ContextCompat.getDrawable(context, jogo.fotoId))
+            tvLancamento.setText(context.getString(R.string.lancamento, jogo.anoLancamento))
+
+            ivDelete.setOnClickListener {
+            listenerDelete(jogo)
+        }
 
             setOnClickListener{ listener(jogo) }
 

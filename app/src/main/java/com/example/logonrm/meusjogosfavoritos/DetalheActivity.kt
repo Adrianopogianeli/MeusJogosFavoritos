@@ -1,5 +1,7 @@
 package com.example.logonrm.meusjogosfavoritos
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v4.content.ContextCompat
@@ -25,10 +27,20 @@ class DetalheActivity : AppCompatActivity() {
         tvDescricao.text = jogo.descricao
 
 
-      /*  fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
-        }*/
+        fab.setOnClickListener { view ->
+
+
+            try {
+                val text = "Olá meu jogo preferido é ${jogo.titulo}"// Replace with your message.
+                val toNumber = "5511966554140"
+                val intent = Intent(Intent.ACTION_VIEW)
+                intent.data = Uri.parse("http://api.whatsapp.com/send?phone=$toNumber&text=$text")
+                startActivity(intent)
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+
+        }
 
     }
 

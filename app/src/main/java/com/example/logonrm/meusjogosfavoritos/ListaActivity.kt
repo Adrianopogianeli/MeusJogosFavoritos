@@ -25,6 +25,10 @@ class ListaActivity : AppCompatActivity() {
             intentDetalhe.putExtra("jogo", it)
 
             startActivity(intentDetalhe)
+
+        },{
+            Toast.makeText(this,"Delete ${it.titulo}",
+                    Toast.LENGTH_LONG).show()
         })
         rvJogos.layoutManager = LinearLayoutManager(this)
 
