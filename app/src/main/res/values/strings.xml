@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">MeusJogosFavoritos</string>
+
+    <string name="titulo_god_of_war">
+        God of War
+    </string>
+
+    <string name="lancamento">
+        Lançamento: %1$d
+    </string>
+
+    <string name="descricao_god_of_war">
+        Muitos anos se passaram desde que Kratos teve sua vingança contra os deuses do Olimpo, e agora ele vive com seu filho Atreus em Midgard. O jogo começa após a morte da segunda esposa de Kratos e mãe de Atreus, Faye. Seu último desejo era que suas cinzas fossem espalhadas no pico mais alto dos nove reinos nórdicos. Antes de iniciar sua jornada, Kratos é confrontado por um homem misterioso com poderes divinos. Depois de aparentemente matá-lo, Kratos e Atreus partiram em sua jornada.
+    </string>
+
+
+
+
 </resources>
