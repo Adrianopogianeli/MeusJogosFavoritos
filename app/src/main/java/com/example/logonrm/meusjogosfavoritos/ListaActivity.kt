@@ -1,5 +1,6 @@
 package com.example.logonrm.meusjogosfavoritos
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
@@ -18,6 +19,12 @@ class ListaActivity : AppCompatActivity() {
 
         rvJogos.adapter = JogoAdapter(this, getJogos(), {
             Toast.makeText(this,it.titulo,Toast.LENGTH_LONG).show()
+
+            val intentDetalhe = Intent(this,DetalheActivity::class.java)
+
+            intentDetalhe.putExtra("jogo", it)
+
+            startActivity(intentDetalhe)
         })
         rvJogos.layoutManager = LinearLayoutManager(this)
 
@@ -28,7 +35,8 @@ class ListaActivity : AppCompatActivity() {
                 Jogo(getString(R.string.titulo_god_of_war),
                         getString(R.string.descricao_god_of_war),
                         2018,
-                        R.drawable.godofwar)
+                        R.drawable.godofwar,
+                        R.drawable.godofwarbanner)
         )
     }
 
