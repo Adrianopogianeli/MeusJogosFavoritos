@@ -12,14 +12,16 @@ import kotlinx.android.synthetic.main.meu_jogo_item.view.*
 /**
  * Created by logonrm on 05/05/2018.
  */
-class jogoAdapter(
+class JogoAdapter(
 
       val  context: Context,
-      val  jogos: List<Jogo>) : RecyclerView.Adapter<jogoAdapter.JogoViewHolder>() {
+      val  jogos: List<Jogo>,
+      val listener: (Jogo) -> Unit) : RecyclerView.Adapter<JogoAdapter.JogoViewHolder>() {
+
     override fun onBindViewHolder(holder: JogoViewHolder?, position: Int) {
         val jogo = jogos[position]
         holder?.let {
-            holder.bindView(jogo)
+            holder.bindView(jogo, listener)
         }
     }
 
@@ -34,11 +36,14 @@ class jogoAdapter(
     }
 
     class JogoViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-        fun bindView(jogo: Jogo) = with(itemView){
+        fun bindView(jogo: Jogo, listener: (Jogo) -> Unit) = with(itemView){
             tvTitulo.text = jogo.titulo
             tvDescricao.text = jogo.descricao
             ivfoto.setImageDrawable(ContextCompat.getDrawable(context,jogo.fotoId))
             tvLancamento.setText(context.getString(R.string.lancamento,jogo.anoLancamento))
+
+            setOnClickListener{ listener(jogo) }
+
         }
     }
 }
